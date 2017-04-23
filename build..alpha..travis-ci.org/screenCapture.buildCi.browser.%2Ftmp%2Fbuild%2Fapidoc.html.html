@@ -1,0 +1,477 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/kurttheviking/git-rev-sync-js">git-rev-sync (v1.9.0)</a>
+</h1>
+<h4>Synchronously get the current git commit hash, tag, or branch</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.git-rev-sync">module git-rev-sync</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.branch">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>branch
+            <span class="apidocSignatureSpan">(dir)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.count">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>count
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.date">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>date
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.isTagDirty">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>isTagDirty
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.log">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>log
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.long">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>long
+            <span class="apidocSignatureSpan">(dir)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.message">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>message
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.short">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>short
+            <span class="apidocSignatureSpan">(dir)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-rev-sync.tag">
+            function <span class="apidocSignatureSpan">git-rev-sync.</span>tag
+            <span class="apidocSignatureSpan">(markDirty)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.git-rev-sync" id="apidoc.module.git-rev-sync">module git-rev-sync</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.branch" id="apidoc.element.git-rev-sync.branch">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>branch
+        <span class="apidocSignatureSpan">(dir)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function branch(dir) {
+  var gitDir = _getGitDirectory(dir);
+
+  var head = fs.readFileSync(path.resolve(gitDir, 'HEAD'), 'utf8');
+  var b = head.match(RE_BRANCH);
+
+  if (b) {
+    return b[1];
+  }
+
+  return 'Detached: ' + head.trim();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+console.log(git.short());
+// 75bf4ee
+
+console.log(git.long());
+// 75bf4eea9aa1a7fd6505d0d0aa43105feafa92ef
+
+console.log(git.<span class="apidocCodeKeywordSpan">branch</span>());
+// master
+```
+
+You can also run these examples via: `npm run examples`
+
+
+## Install
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.count" id="apidoc.element.git-rev-sync.count">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>count
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function count() {
+  return parseInt(_command('git', ['rev-list', '--all', '--count']), 10);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+return the result of `git rev-parse HEAD`; optional `filePath` parameter can be used to run the command against a repo outside the
+ current working directory
+
+#### `git.branch([filePath])` &amp;rarr; &amp;lt;String&amp;gt;
+
+return the current branch; optional `filePath` parameter can be used to run the command against a repo outside the current working
+ directory
+
+#### `git.<span class="apidocCodeKeywordSpan">count</span>()` &amp;rarr; &amp;lt;Number&amp;gt;
+
+return the count of commits across all branches; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.date()` &amp;rarr; &amp;lt;Date&amp;gt;
+
+returns the date of the current commit; this method will fail if the `git` command is not found in `PATH`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.date" id="apidoc.element.git-rev-sync.date">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>date
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function date() {
+  return new Date(_command('git', ['log', '--no-color', '-n', '1', '--pretty=format:"%ad"']));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+return the current branch; optional `filePath` parameter can be used to run the command against a repo outside the current working
+ directory
+
+#### `git.count()` &amp;rarr; &amp;lt;Number&amp;gt;
+
+return the count of commits across all branches; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.<span class="apidocCodeKeywordSpan">date</span>()` &amp;rarr; &amp;lt;Date&amp;gt;
+
+returns the date of the current commit; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.isTagDirty()` &amp;rarr; &amp;lt;Boolean&amp;gt;
+
+returns true if the current tag is dirty; this method will fail if the `git` command is not found in `PATH`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.isTagDirty" id="apidoc.element.git-rev-sync.isTagDirty">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>isTagDirty
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isTagDirty() {
+  try {
+    _command('git', ['describe', '--exact-match', '--tags']);
+  } catch (e) {
+    if (e.message.indexOf('no tag exactly matches')) {
+      return true;
+    }
+
+    throw e;
+  }
+  return false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+return the count of commits across all branches; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.date()` &amp;rarr; &amp;lt;Date&amp;gt;
+
+returns the date of the current commit; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.<span class="apidocCodeKeywordSpan">isTagDirty</span>()` &amp;rarr; &amp;lt;Boolean&amp;gt;
+
+returns true if the current tag is dirty; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.message()` &amp;rarr; &amp;lt;String&amp;gt;
+
+return the current commit message; this method will fail if the `git` command is not found in `PATH`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.log" id="apidoc.element.git-rev-sync.log">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>log
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function log() {
+  throw new Error('not implemented');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+## Example
+
+```js
+var git = require('git-rev-sync');
+
+console.<span class="apidocCodeKeywordSpan">log</span>(git.short());
+// 75bf4ee
+
+console.log(git.long());
+// 75bf4eea9aa1a7fd6505d0d0aa43105feafa92ef
+
+console.log(git.branch());
+// master
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.long" id="apidoc.element.git-rev-sync.long">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>long
+        <span class="apidocSignatureSpan">(dir)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function long(dir) {
+  var b = branch(dir);
+
+  if (/Detached: /.test(b)) {
+    return b.substr(11);
+  }
+
+  var gitDir = _getGitDirectory(dir);
+  var refsFilePath = path.resolve(gitDir, 'refs', 'heads', b);
+  var ref;
+
+  if (fs.existsSync(refsFilePath)) {
+    ref = fs.readFileSync(refsFilePath, 'utf8');
+  } else {
+    // If there isn't an entry in /refs/heads for this branch, it may be that
+    // the ref is stored in the packfile (.git/packed-refs). Fall back to
+    // looking up the hash here.
+    var refToFind = ['refs', 'heads', b].join('/');
+    var packfileContents = fs.readFileSync(path.resolve(gitDir, 'packed-refs'), 'utf8');
+    var packfileRegex = new RegExp('(.*) ' + escapeStringRegexp(refToFind));
+    ref = packfileRegex.exec(packfileContents)[1];
+  }
+
+  return ref.trim();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```js
+var git = require('git-rev-sync');
+
+console.log(git.short());
+// 75bf4ee
+
+console.log(git.<span class="apidocCodeKeywordSpan">long</span>());
+// 75bf4eea9aa1a7fd6505d0d0aa43105feafa92ef
+
+console.log(git.branch());
+// master
+```
+
+You can also run these examples via: `npm run examples`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.message" id="apidoc.element.git-rev-sync.message">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>message
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function message() {
+  return _command('git', ['log', '-1', '--pretty=%B']);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+returns the date of the current commit; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.isTagDirty()` &amp;rarr; &amp;lt;Boolean&amp;gt;
+
+returns true if the current tag is dirty; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.<span class="apidocCodeKeywordSpan">message</span>()` &amp;rarr; &amp;lt;String&amp;gt;
+
+return the current commit message; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.tag([markDirty])` &amp;rarr; &amp;lt;String&amp;gt;
+
+return the current tag and mark as dirty if markDirty is truthful; this method will fail if the `git` command is not found in `PATH
+`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.short" id="apidoc.element.git-rev-sync.short">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>short
+        <span class="apidocSignatureSpan">(dir)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function short(dir) {
+  return long(dir).substr(0, 7);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+## Example
+
+```js
+var git = require('git-rev-sync');
+
+console.log(git.<span class="apidocCodeKeywordSpan">short</span>());
+// 75bf4ee
+
+console.log(git.long());
+// 75bf4eea9aa1a7fd6505d0d0aa43105feafa92ef
+
+console.log(git.branch());
+// master
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.git-rev-sync.tag" id="apidoc.element.git-rev-sync.tag">
+        function <span class="apidocSignatureSpan">git-rev-sync.</span>tag
+        <span class="apidocSignatureSpan">(markDirty)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function tag(markDirty) {
+  if (markDirty) {
+    return _command('git', ['describe', '--always', '--tag', '--dirty', '--abbrev=0']);
+  }
+
+  return _command('git', ['describe', '--always', '--tag', '--abbrev=0']);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+returns true if the current tag is dirty; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.message()` &amp;rarr; &amp;lt;String&amp;gt;
+
+return the current commit message; this method will fail if the `git` command is not found in `PATH`
+
+#### `git.<span class="apidocCodeKeywordSpan">tag</span>([markDirty])` &amp;rarr; &amp;lt;String&amp;gt;
+
+return the current tag and mark as dirty if markDirty is truthful; this method will fail if the `git` command is not found in `PATH
+`
+
+
+## License
+
+[MIT](https://github.com/kurttheviking/git-rev-sync/blob/master/LICENSE)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
